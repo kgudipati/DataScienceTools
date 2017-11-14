@@ -1,5 +1,5 @@
 '''
-test Vector Arithmatic Module
+Vector Arithmatic Module
 '''
 import math
 
