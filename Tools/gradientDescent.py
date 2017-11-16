@@ -3,6 +3,7 @@ Gradient Descent Module
 '''
 import vectors as vec
 import math
+import random
 
 # Step function used by gradient to movie step_size amount in direction from v
 def step(v, direction, step_size):
@@ -45,6 +46,10 @@ def minimizeBatch(target_fn, gradient_fn, theta_0, tolerance=0.000001):
         next_theta = min(updated_thetas, key=target_fn)
         next_value = target_fn(next_theta)
 
+        print "Gradient:", gradient
+        print "Old Value:", value
+        print "New Value:", next_value
+
         # stop if converged
         if abs(value - next_value) < tolerance:
             return theta
@@ -80,8 +85,8 @@ def randomizeData(data):
 
 
 # Stochastic Gradient Descent implementation
-def minimize_stochastic(target_fn, gradient_fn, x, y, theta_0, alpha_0=0.01):
-
+def minimizeStochastic(target_fn, gradient_fn, x, y, theta_0, alpha_0=0.01):
+    print "Minimize Stochastic"
     data = zip(x, y)
 
     # initial theta and step size
@@ -115,5 +120,6 @@ def minimize_stochastic(target_fn, gradient_fn, x, y, theta_0, alpha_0=0.01):
 
 
 # Use stochastic gradient descent to maximize function
-def maximize_stochastic(target_fn, gradient_fn, x, y, theta_0, alpha_0=0.01):
-    return minimize_stochastic(negate(target_fn), negate_all(gradient_fn), x, y, theta_0, alpha_0)
+def maximizeStochastic(target_fn, gradient_fn, x, y, theta_0, alpha_0=0.01):
+    print "Maximize Stochastic"
+    return minimizeStochastic(negate(target_fn), negateAll(gradient_fn), x, y, theta_0, alpha_0)

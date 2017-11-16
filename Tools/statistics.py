@@ -2,6 +2,7 @@
 Statistics Module
 '''
 import vectors as vec
+import collections
 import math
 
 # Get mean of given list of numbers
@@ -34,7 +35,7 @@ def quantile(x, p):
 
 # Get the most common values
 def mode(x):
-    counts = Counter(x)
+    counts = collections.Counter(x)
     max_count = max(counts.values())
     return [x_i for x_i, count in counts.iteritems() if count == max_count]
 
@@ -72,7 +73,7 @@ def interquantileRange(x):
 # 0: no relationship between data
 def covariance(x, y):
     n = len(x)
-    return dot(de_mean(x), de_mean(y)) / (n - 1)
+    return vec.dot(de_mean(x), de_mean(y)) / (n - 1)
 
 
 # Correlation between data sets
@@ -84,4 +85,4 @@ def correlation(x, y):
     if stdev_x > 0 and stdev_y > 0:
         return covariance(x, y) / stdev_x / stdev_y
     else:
-        reutrn 0 # no variation
+        return 0 # no variation
