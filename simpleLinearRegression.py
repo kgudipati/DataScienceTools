@@ -1,5 +1,6 @@
 '''
 Simple Linear Regression Classifier Module
+y_i = alpha + beta*x_i + error_i
 '''
 import vectors as vec
 import matrix as mat
@@ -49,5 +50,14 @@ def squaredError(x_i, y_i, theta):
 
 def squaredErrorGradients(x_i, y_i, theta):
     alpha, beta = theta
-    return [-2 * error(alpha, beta x_i, y_i), -2 * error(alpha, beta, x_i, y_i) * x_i]
+    return [-2 * error(alpha, beta, x_i, y_i), -2 * error(alpha, beta, x_i, y_i) * x_i]
 
+# Use data too minimize the total error of function over dataset and return coefficients alpha and beta
+def estimateCoefficients(x,y ):
+    random.seed(0)
+    theta = [random.random(), random.random()]
+    alpha, beta = gd.minimizeStochastic(squaredError,
+                                        x, y,
+                                        theta,
+                                        0.0001)
+    return alpha, beta

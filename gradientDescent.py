@@ -71,7 +71,10 @@ def negateAll(f):
 
 # Use gradient descent to maximize the function
 def maximizeBatch(target_fn, gradient_fn, theta_0, tolerance=0.000001):
-    return minimizeBatch(negate(target_fn), negateAll(gradient_fn), theta_0, tolerance)
+    return minimizeBatch(negate(target_fn), 
+                         negateAll(gradient_fn), 
+                         theta_0, 
+                         tolerance)
 
 
 # Helper generator function to return elements of data in random order
@@ -122,4 +125,9 @@ def minimizeStochastic(target_fn, gradient_fn, x, y, theta_0, alpha_0=0.01):
 # Use stochastic gradient descent to maximize function
 def maximizeStochastic(target_fn, gradient_fn, x, y, theta_0, alpha_0=0.01):
     print "Maximize Stochastic"
-    return minimizeStochastic(negate(target_fn), negateAll(gradient_fn), x, y, theta_0, alpha_0)
+    return minimizeStochastic(negate(target_fn),
+                              negateAll(gradient_fn),
+                              x, 
+                              y, 
+                              theta_0, 
+                              alpha_0)
