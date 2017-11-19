@@ -7,6 +7,7 @@ import matrix as mat
 import statistics as stat
 import gradientDescent as gd
 import simpleLinearRegression as slg
+import dataprocessing as dp
 import random
 
 # Predict final label

@@ -160,3 +160,12 @@ def f1_score(tp, fp, tn, fn):
     p = precision(tp, fp, tn, fn)
     r = recall(tp, fp, tn, fn)
     return 2 * p * r / (p + r)
+
+
+# Randomly samples len(data) elements with replacement
+def bootstrapSample(data):
+    return [random.choice(data) for _ in data]
+
+# Evaluates stats_fn on num_samples bootstrap samples from data
+def bootstrapStatistics(data, stats_fn, num_samples):
+    return [stats_fn(bootstrapSample(data)) for _ in range(num_samples)]
